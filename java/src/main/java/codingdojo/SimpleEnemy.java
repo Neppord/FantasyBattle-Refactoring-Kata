@@ -1,5 +1,6 @@
 package codingdojo;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class SimpleEnemy extends Target {
     }
 
     List<Buff> getBuffs() {
-        buffs = Collections.emptyList();
         return buffs;
     }
 
