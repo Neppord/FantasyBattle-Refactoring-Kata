@@ -1,4 +1,4 @@
 package codingdojo;
 
-public interface Target {
+abstract class Target {
 }

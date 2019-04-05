@@ -3,7 +3,7 @@ package codingdojo;
 import java.util.Collections;
 import java.util.List;
 
-public class SimpleEnemy implements Target{
+public class SimpleEnemy extends Target {
 
     private Armor armor;
     private List<Buff> buffs;

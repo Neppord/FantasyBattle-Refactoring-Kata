@@ -1,7 +1,7 @@
 package codingdojo;
 
 
-class Player implements Target {
+class Player extends Target {
     // TODO: add player buffs
 
     Player(Inventory inventory, Stats stats) {
