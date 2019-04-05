@@ -9,6 +9,15 @@ class Equipment {
     private Item head;
     private Item feet;
     private Item chest;
+
+    Equipment(Item leftHand, Item rightHand, Item head, Item feet, Item chest) {
+        this.leftHand = leftHand;
+        this.rightHand = rightHand;
+        this.head = head;
+        this.feet = feet;
+        this.chest = chest;
+    }
+
     Item getLeftHand() {
         return leftHand;
     }
