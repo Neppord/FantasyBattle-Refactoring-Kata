@@ -5,30 +5,20 @@ import java.util.List;
 
 public class SimpleEnemy implements Target{
 
-    private int hitPoints;
     private Armor armor;
     private List<Buff> buffs;
 
-    public SimpleEnemy(int hitPoints, Armor armor, List<Buff> buffs) {
-        this.hitPoints = hitPoints;
+    public SimpleEnemy(Armor armor, List<Buff> buffs) {
         this.armor = armor;
         this.buffs = buffs;
     }
 
-    public List<Buff> getBuffs() {
+    List<Buff> getBuffs() {
         buffs = Collections.emptyList();
         return buffs;
     }
 
-    public Armor getArmor() {
+    Armor getArmor() {
         return this.armor;
-    }
-
-    public int getHP() {
-        return this.hitPoints;
-    }
-
-    public void setHP(int hitPoints) {
-        this.hitPoints = hitPoints;
     }
 }

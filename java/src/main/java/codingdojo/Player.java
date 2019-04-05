@@ -1,10 +1,10 @@
 package codingdojo;
 
 
-public class Player implements Target {
+class Player implements Target {
     // TODO: add player buffs
 
-    public Player(Inventory inventory, Stats stats) {
+    Player(Inventory inventory, Stats stats) {
         this.inventory = inventory;
         this.stats = stats;
     }
@@ -12,7 +12,7 @@ public class Player implements Target {
     private Inventory inventory;
     private Stats stats;
 
-    void attack (Target other) {
+    Damage attack (Target other) {
         Equipment equipment = this.inventory.getEquipment();
         Item leftHand = equipment.getLeftHand();
         Item rightHand = equipment.getRightHand();
@@ -39,7 +39,7 @@ public class Player implements Target {
         if (other instanceof Player) {
             // TODO: Not implemented yet
             //  Add friendly fire and player HP
-            return;
+            return new Damage(0);
         } else if (other instanceof SimpleEnemy) {
             SimpleEnemy simpleEnemy = (SimpleEnemy) other;
             int soak = Math.round(
@@ -52,8 +52,8 @@ public class Player implements Target {
                     1f
                 )
             );
-            int hitPoints = simpleEnemy.getHP();
-            simpleEnemy.setHP(hitPoints - Math.max(0, totalDamage - soak));
+            return new Damage(Math.max(0, totalDamage - soak));
         }
+        return new Damage(0);
     }
 }
