@@ -10,7 +10,7 @@ class Player extends Target {
         this.stats = stats;
     }
 
-    Damage attack (Target other) {
+    Damage calculateDamage(Target other) {
         int baseDamage = getBaseDamage();
         float damageModifier = getDamageModifier();
         int totalDamage = Math.round(baseDamage * damageModifier);
