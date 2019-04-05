@@ -16,14 +16,19 @@ class Player extends Target {
         int baseDamage = getBaseDamage();
         float damageModifier = getDamageModifier();
         int totalDamage = Math.round(baseDamage * damageModifier);
+        int soak = getSoak(other, totalDamage);
+        return new Damage(Math.max(0, totalDamage - soak));
+    }
 
+    private int getSoak(Target other, int totalDamage) {
+        int soak = 0;
         if (other instanceof Player) {
             // TODO: Not implemented yet
             //  Add friendly fire and player HP
-            return new Damage(0);
+            soak = totalDamage;
         } else if (other instanceof SimpleEnemy) {
             SimpleEnemy simpleEnemy = (SimpleEnemy) other;
-            int soak = Math.round(
+            soak = Math.round(
                 simpleEnemy.getArmor().getDamageSoak() *
                 (
                     ((float) simpleEnemy.getBuffs()
@@ -33,9 +38,8 @@ class Player extends Target {
                     1f
                 )
             );
-            return new Damage(Math.max(0, totalDamage - soak));
         }
-        return new Damage(0);
+        return soak;
     }
 
     private float getDamageModifier() {
