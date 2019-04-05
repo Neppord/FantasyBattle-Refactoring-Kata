@@ -1,9 +1,7 @@
 # Law of Demeter
 
-Try to test the method calculateDamage on the Player class with a time box on 10 min.
+Try to write a test for the method 'calculateDamage' on the Player class, without changing any of the production code. Give yourself a time box of 10 min, then reflect on why this method is hard to test.
 
-After that try to make the method follow the law of demeter by extracting methods and moving them to the correct class. Some of the destination classes migth now break the law of demeter, but that is okay for now.
+When you have reflected, you should refactor the 'calculateDamage' method to better follow the Law of Demeter. Also add test cases to cover the functionality in the Player class.
 
-When you are done with the refactor try to test it again.
-
-If you feel that you are done, and have a few tests. Try to do any of the todo that are sprinkled over the code. And reflect on which of them will now be easier to do then before the refactor. 
+When you feel that you are done, and have a few tests with good coverage of Player, you can address problems in the other classes. To help you, there are 'TODO' messages sprinkled over the code. Reflect on which of these TODO hints will now be easier to address compared with before your refactoring work. 

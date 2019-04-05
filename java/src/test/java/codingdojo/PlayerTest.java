@@ -1,5 +1,6 @@
 package codingdojo;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -10,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
 
+    @Ignore("Test is not finished yet")
     @Test
     public void damageCalculationsWithMocks() {
         Inventory inventory = mock(Inventory.class);
@@ -20,6 +22,7 @@ public class PlayerTest {
         assertEquals(10, damage.getAmount());
     }
 
+    @Ignore("Test is not finished yet")
     @Test
     public void damageCalculations() {
         Inventory inventory = new Inventory(null) {
