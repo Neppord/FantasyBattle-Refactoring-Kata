@@ -24,7 +24,7 @@ class Player extends Target {
         int soak = 0;
         if (other instanceof Player) {
             // TODO: Not implemented yet
-            //  Add friendly fire and player HP
+            //  Add friendly fire
             soak = totalDamage;
         } else if (other instanceof SimpleEnemy) {
             SimpleEnemy simpleEnemy = (SimpleEnemy) other;
