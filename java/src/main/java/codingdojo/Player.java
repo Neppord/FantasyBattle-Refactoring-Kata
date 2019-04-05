@@ -2,8 +2,6 @@ package codingdojo;
 
 
 class Player extends Target {
-    // TODO: add player buffs
-
     private Inventory inventory;
     private Stats stats;
 
