@@ -3,7 +3,7 @@ package codingdojo;
 import java.util.Collections;
 import java.util.List;
 
-public class SimpleEnemy {
+public class SimpleEnemy implements Target{
 
     private int hitPoints;
     private Armor armor;
