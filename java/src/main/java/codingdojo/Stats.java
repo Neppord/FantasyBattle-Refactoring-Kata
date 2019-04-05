@@ -5,7 +5,11 @@ public class Stats {
     //  but half of what strength gives.
     private int strength;
 
-    public int getStrength() {
+    public Stats(int strength) {
+        this.strength = strength;
+    }
+
+    int getStrength() {
         return strength;
     }
 }
