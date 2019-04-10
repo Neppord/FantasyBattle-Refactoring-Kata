@@ -2,7 +2,7 @@
 {
     internal interface IBuff
     {
-        float soakModifier();
-        float damageModifier();
+        float SoakModifier();
+        float DamageModifier();
     }
 }

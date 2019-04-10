@@ -5,28 +5,21 @@ namespace lod
 {
     public class Player : Target
     {
+        public Inventory Inventory { get; set; }
+        public Stats Stats { get; set; }
 
-        private Inventory inventory;
-        private Stats stats;
-
-        public Player(Inventory inventory, Stats stats)
+        public Damage CalculateDamage(Target other)
         {
-            this.inventory = inventory;
-            this.stats = stats;
+            var baseDamage = GetBaseDamage();
+            var damageModifier = GetDamageModifier();
+            var totalDamage = (int) Math.Round(baseDamage * damageModifier, MidpointRounding.AwayFromZero);
+            var soak = GetSoak(other, totalDamage);
+            return new Damage{Amount = Math.Max(0, totalDamage - soak)};
         }
 
-        public Damage calculateDamage(Target other)
+        private int GetSoak(Target other, int totalDamage)
         {
-            int baseDamage = getBaseDamage();
-            float damageModifier = getDamageModifier();
-            int totalDamage = (int) Math.Round(baseDamage * damageModifier, MidpointRounding.AwayFromZero);
-            int soak = getSoak(other, totalDamage);
-            return new Damage(Math.Max(0, totalDamage - soak));
-        }
-
-        private int getSoak(Target other, int totalDamage)
-        {
-            int soak = 0;
+            var soak = 0;
             if (other is Player) {
                 // TODO: Not implemented yet
                 //  Add friendly fire
@@ -34,10 +27,10 @@ namespace lod
             } else if (other is SimpleEnemy) {
                 SimpleEnemy simpleEnemy = (SimpleEnemy)other;
                 soak = (int)Math.Round(
-                    simpleEnemy.getArmor().getDamageSoak() *
+                    simpleEnemy.Armor.GetDamageSoak() *
                     (
-                        ((float)simpleEnemy.getBuffs()
-                             .Select(buff => buff.soakModifier())
+                        ((float)simpleEnemy.Buffs
+                             .Select(buff => buff.SoakModifier())
                              .Sum() + 1f)
                     )
                 );
@@ -45,36 +38,36 @@ namespace lod
             return soak;
         }
 
-        private float getDamageModifier()
+        private float GetDamageModifier()
         {
-            Equipment equipment = this.inventory.getEquipment();
-            Item leftHand = equipment.getLeftHand();
-            Item rightHand = equipment.getRightHand();
-            Item head = equipment.getHead();
-            Item feet = equipment.getFeet();
-            Item chest = equipment.getChest();
-            float strengthModifier = stats.getStrength() * 0.1f;
+            var equipment = this.Inventory.Equipment;
+            var leftHand = equipment.LeftHand;
+            var rightHand = equipment.RightHand;
+            var head = equipment.Head;
+            var feet = equipment.Feet;
+            var chest = equipment.Chest;
+            float strengthModifier = Stats.Strength * 0.1f;
             return strengthModifier +
-                leftHand.getDamageModifier() +
-                rightHand.getDamageModifier() +
-                head.getDamageModifier() +
-                feet.getDamageModifier() +
-                chest.getDamageModifier();
+                leftHand.GetDamageModifier() +
+                rightHand.GetDamageModifier() +
+                head.GetDamageModifier() +
+                feet.GetDamageModifier() +
+                chest.GetDamageModifier();
         }
 
-        private int getBaseDamage()
+        private int GetBaseDamage()
         {
-            Equipment equipment = this.inventory.getEquipment();
-            Item leftHand = equipment.getLeftHand();
-            Item rightHand = equipment.getRightHand();
-            Item head = equipment.getHead();
-            Item feet = equipment.getFeet();
-            Item chest = equipment.getChest();
-            return leftHand.getBaseDamage() +
-            rightHand.getBaseDamage() +
-            head.getBaseDamage() +
-            feet.getBaseDamage() +
-            chest.getBaseDamage();
+            var equipment = this.Inventory.Equipment;
+            var leftHand = equipment.LeftHand;
+            var rightHand = equipment.RightHand;
+            var head = equipment.Head;
+            var feet = equipment.Feet;
+            var chest = equipment.Chest;
+            return leftHand.GetBaseDamage() +
+            rightHand.GetBaseDamage() +
+            head.GetBaseDamage() +
+            feet.GetBaseDamage() +
+            chest.GetBaseDamage();
         }
     }
 }

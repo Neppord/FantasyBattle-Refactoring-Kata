@@ -2,16 +2,7 @@
 {
     public class Inventory
     {
-        private Equipment equipment;
+        public Equipment Equipment { get; set; }
 
-        public Inventory(Equipment equipment)
-        {
-            this.equipment = equipment;
-        }
-
-        public Equipment getEquipment()
-        {
-            return equipment;
-        }
     }
 }

@@ -7,8 +7,8 @@ namespace lod
 {
     public interface Item
     {
-        int getBaseDamage();
+        int GetBaseDamage();
 
-        float getDamageModifier();
+        float GetDamageModifier();
     }
 }
