@@ -4,7 +4,7 @@ Try to write a test for the method 'calculateDamage' on the Player class, withou
 
 When you have reflected, you should refactor the 'calculateDamage' method to better follow the Law of Demeter. Also add test cases to cover the functionality in the Player class.
 
-When you feel that you are done, depending on how much time you have, you may continue to implement tests until you have good coverage or look through the todo in the code (alt+6 in intellij). Reflect on which of these TODO hints will now be easier to address compared with before your refactoring work. And if time allows it then try to implement those features. 
+When you feel that you are done, depending on how much time you have, you may continue to implement tests until you have good coverage or look through the todo in the code (alt+6 in intellij). Reflect on which of these TODO hints will now be easier to address compared with before your refactoring work, then try to implement those features. 
 
 Example Data for use in Test cases
 ----------------------------------
