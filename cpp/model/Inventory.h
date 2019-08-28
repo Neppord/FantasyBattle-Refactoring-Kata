@@ -2,8 +2,15 @@
 #define CPP_INVENTORY_H
 
 
-class Inventory {
+#include "Equipment.h"
 
+class Inventory {
+public:
+    explicit Inventory(Equipment & equipment);
+
+    Equipment & getEquipment();
+private:
+    Equipment equipment;
 };
 
 

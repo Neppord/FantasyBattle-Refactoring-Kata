@@ -33,6 +33,10 @@ add_executable(FantasyBattle test/main.cpp
         model/Damage.cpp model/Damage.h
         model/Inventory.cpp model/Inventory.h
         model/Player.cpp model/Player.h
-        test/PlayerTest.cpp)
+        test/PlayerTest.cpp
+        model/Stats.cpp model/Stats.h
+        model/Equipment.cpp model/Equipment.h
+        model/Armor.cpp model/Armor.h
+        model/Buff.cpp model/Buff.h model/SimpleEnemy.cpp model/SimpleEnemy.h model/Target.h model/Item.cpp model/Item.h)
 target_link_libraries(FantasyBattle ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 add_test(NAME FantasyBattle COMMAND FantasyBattle)

@@ -4,16 +4,23 @@
 
 #include "Inventory.h"
 #include "Damage.h"
+#include "Stats.h"
+#include "Target.h"
 
 class Player {
 
 public:
-    Player(Inventory & inventory);
+    Player(Inventory & inventory, Stats & stats);
 
-    Damage * calculateDamage();
+    Damage * calculateDamage(Target & target);
 
 protected:
     Inventory & inventory;
+    Stats & stats;
+
+    int getBaseDamage();
+    float getDamageModifier();
+    int getSoak(Target & other, int totalDamage);
 };
 
 
