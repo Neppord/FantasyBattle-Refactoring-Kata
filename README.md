@@ -1,4 +1,9 @@
-# Law of Demeter
+Fantasy Battle Refactoring Kata
+===============================
+
+This code is part of a larger fantasy battle game. Players in the game will fight monsters using the equipment they are wearing. The type of equipment will affect how much damage they do to the monsters. Monsters also vary according to what armour and equipment they are wearing. This part of the code is concerned with calculating how much damage the player is doing to a monster when they fight. 
+
+The kata is designed to teach you something about the [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter). The "Player" class perhaps doesn't follow this law very well.
 
 Try to write a test for the method 'calculateDamage' on the Player class, without changing any of the production code. Use the description below to help you design a test scenario. Note there are two example test cases to start from. Choose the one you prefer. Give yourself a time box of 10 min, then reflect on why this method is hard to test.
 

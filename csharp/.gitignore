@@ -1,4 +1,6 @@
-bin
-obj
 .vs
-packages/*
+*/bin
+*/obj
+*/packages
+
+.idea
