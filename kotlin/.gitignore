@@ -1,0 +1,10 @@
+.idea
+*.iml
+target
+.gradle
+build
+.project
+.classpath
+.settings
+.pmd
+law-of-demeter.iml
