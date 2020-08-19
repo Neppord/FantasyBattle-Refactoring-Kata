@@ -1,7 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "maven"
-    directory: "/"
+    directory: "/java"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+  - package-ecosystem: "gradle"
+    directory: "/kotlin"
     schedule:
       interval: "daily"
       time: "02:00"
