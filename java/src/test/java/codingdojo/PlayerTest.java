@@ -1,19 +1,17 @@
 package codingdojo;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class PlayerTest {
 
     // choose this one if you are familiar with mocks
-    @Ignore("Test is not finished yet")
+    @Disabled("Test is not finished yet")
     @Test
-    public void damageCalculationsWithMocks() {
+    void damageCalculationsWithMocks() {
         Inventory inventory = mock(Inventory.class);
         Stats stats = mock(Stats.class);
         SimpleEnemy target = mock(SimpleEnemy.class);
@@ -23,9 +21,9 @@ public class PlayerTest {
     }
 
     // choose this one if you are not familiar with mocks
-    @Ignore("Test is not finished yet")
+    @Disabled("Test is not finished yet")
     @Test
-    public void damageCalculations() {
+    void damageCalculations() {
         Inventory inventory = new Inventory(null);
         Stats stats = new Stats(0);
         SimpleEnemy target = new SimpleEnemy(null, null);
