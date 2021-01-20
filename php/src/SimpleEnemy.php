@@ -13,6 +13,11 @@ class SimpleEnemy extends Target
      */
     private array $buffs;
 
+    /**
+     * SimpleEnemy constructor.
+     * @param Armor $armor
+     * @param array<Buff> $buffs
+     */
     public function __construct(Armor $armor, array $buffs)
     {
         $this->armor = $armor;

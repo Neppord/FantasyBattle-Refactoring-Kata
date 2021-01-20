@@ -19,10 +19,10 @@ class Player extends Target
     {
         $baseDamage = $this->getBaseDamage();
         $damageModifier = $this->getDamageModifier();
-        $totalDamage = round($baseDamage * $damageModifier);
+        $totalDamage = intval(round($baseDamage * $damageModifier));
         $soak = $this->getSoak($other, $totalDamage);
 
-        return new Damage(max(0, $totalDamage - $soak));
+        return new Damage(intval(max(0, $totalDamage - $soak)));
     }
 
     private function getBaseDamage(): int
@@ -59,7 +59,7 @@ class Player extends Target
             $chest->getDamageModifier();
     }
 
-    private function getSoak(Target $other, float $totalDamage)
+    private function getSoak(Target $other, int $totalDamage): int
     {
         $soak = 0;
         if ($other instanceof Player) {
@@ -80,6 +80,6 @@ class Player extends Target
             }
         }
 
-        return $soak;
+        return intval($soak);
     }
 }
