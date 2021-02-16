@@ -74,7 +74,7 @@ class Player extends Target
                     array_reduce(
                         $simpleEnemy->getBuffs(),
                         fn(float $acc, Buff $buff) => $acc + $buff->soakModifier(),
-                        0
+                        1
                     )
                 );
             }
