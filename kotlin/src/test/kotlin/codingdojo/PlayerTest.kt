@@ -1,8 +1,8 @@
 package codingdojo
 
+import com.nhaarman.mockitokotlin2.mock
 import org.junit.Ignore
 import org.junit.Test
-import org.mockito.Mockito.mock
 import kotlin.test.assertEquals
 
 class PlayerTest {
@@ -11,11 +11,12 @@ class PlayerTest {
     @Ignore("Test is not finished yet")
     @Test
     fun damageCalculationsWithMocks() {
-        val inventory = mock(Inventory::class.java)
-        val stats = mock(Stats::class.java)
-        val target = mock(SimpleEnemy::class.java)
+        val inventory: Inventory = mock()
+        val stats: Stats = mock()
+        val target: SimpleEnemy = mock()
 
         val damage = Player(inventory, stats).calculateDamage(target)
+
         assertEquals(10, damage.amount)
     }
 
@@ -26,7 +27,9 @@ class PlayerTest {
         val inventory = Inventory(null !!)
         val stats = Stats(0)
         val target = SimpleEnemy(null !!, null !!)
+
         val damage = Player(inventory, stats).calculateDamage(target)
+
         assertEquals(10, damage.amount)
     }
 }
