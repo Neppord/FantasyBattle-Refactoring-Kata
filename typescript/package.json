@@ -1,5 +1,5 @@
 {
-    "name": "parrot-refactoring-kata",
+    "name": "fantasy-battle-refactoring-kata",
     "version": "0.0.1",
     "scripts": {
         "test": "jest",
