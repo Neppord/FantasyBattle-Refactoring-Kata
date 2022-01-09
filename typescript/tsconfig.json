@@ -1,13 +1,13 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-    "target": "es5",
-    "lib": [
-        "esnext"
-    ],
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "./build/",
+        "target": "es6",
+        "lib": [
+            "esnext"
+        ],
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "./build/",
         "noEmitOnError": true,
         "alwaysStrict": true,
         "strict": true,
