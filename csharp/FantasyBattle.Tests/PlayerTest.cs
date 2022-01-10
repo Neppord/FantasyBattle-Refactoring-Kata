@@ -3,11 +3,11 @@ using System.Text;
 using Moq;
 using Xunit;
 
-namespace FantasyBattle
+namespace FantasyBattle.Tests
 {
     public class PlayerTest
     {
-        
+
         // choose this one if you are familiar with mocks
         [Fact(Skip = "Test is not finished yet")]
         public void DamageCalculationsWithMocks() {

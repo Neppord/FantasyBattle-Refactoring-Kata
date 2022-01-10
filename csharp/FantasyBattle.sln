@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyBattle", "FantasyBattle\FantasyBattle.csproj", "{AEE68BE5-D906-4521-B9B6-2D199A344BBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyBattle.Tests", "FantasyBattle.Tests\FantasyBattle.Tests.csproj", "{3078B185-ABED-4C13-98B4-1CC4996A338C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AEE68BE5-D906-4521-B9B6-2D199A344BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEE68BE5-D906-4521-B9B6-2D199A344BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEE68BE5-D906-4521-B9B6-2D199A344BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3078B185-ABED-4C13-98B4-1CC4996A338C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3078B185-ABED-4C13-98B4-1CC4996A338C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3078B185-ABED-4C13-98B4-1CC4996A338C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3078B185-ABED-4C13-98B4-1CC4996A338C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
