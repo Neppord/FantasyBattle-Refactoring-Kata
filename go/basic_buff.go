@@ -5,14 +5,14 @@ type BasicBuff struct {
 	damage float64
 }
 
-func makeBasicBuff(soak float64, damage float64) BasicBuff {
+func MakeBasicBuff(soak float64, damage float64) BasicBuff {
 	return BasicBuff{soak, damage}
 }
 
-func (this BasicBuff) soakModifier() float64 {
-	return this.soak
+func (b BasicBuff) SoakModifier() float64 {
+	return b.soak
 }
 
-func (this BasicBuff) damageModifier() float64 {
-	return this.damage
+func (b BasicBuff) DamageModifier() float64 {
+	return b.damage
 }

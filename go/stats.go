@@ -6,10 +6,10 @@ type Stats struct {
 	strength int32
 }
 
-func makeStats(strength int32) Stats {
+func MakeStats(strength int32) Stats {
 	return Stats{strength}
 }
 
-func (this Stats) getStrength() int32 {
-	return this.strength
+func (s Stats) GetStrength() int32 {
+	return s.strength
 }

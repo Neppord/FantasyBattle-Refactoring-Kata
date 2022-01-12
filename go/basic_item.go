@@ -6,14 +6,14 @@ type BasicItem struct {
 	damageModifier float64
 }
 
-func makeBasicItem(name string, baseDamage int32, damageModifier float64) BasicItem {
+func MakeBasicItem(name string, baseDamage int32, damageModifier float64) BasicItem {
 	return BasicItem{name, baseDamage, damageModifier}
 }
 
-func (this BasicItem) getBaseDamage() int32 {
-	return this.baseDamage
+func (i BasicItem) GetBaseDamage() int32 {
+	return i.baseDamage
 }
 
-func (this BasicItem) getDamageModifier() float64 {
-	return this.damageModifier
+func (i BasicItem) GetDamageModifier() float64 {
+	return i.damageModifier
 }

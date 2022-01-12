@@ -1,5 +1,5 @@
 package codingdojo
 
 type Armor interface {
-	getDamageSoak() int32
+	GetDamageSoak() int32
 }

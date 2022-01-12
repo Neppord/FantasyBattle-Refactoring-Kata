@@ -4,10 +4,10 @@ type Inventory struct {
 	equipment Equipment
 }
 
-func makeInventory(equipment Equipment) Inventory {
+func MakeInventory(equipment Equipment) Inventory {
 	return Inventory{equipment}
 }
 
-func (this Inventory) getEquipment() Equipment {
-	return this.equipment
+func (i Inventory) GetEquipment() Equipment {
+	return i.equipment
 }
