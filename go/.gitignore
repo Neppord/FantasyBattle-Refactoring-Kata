@@ -20,3 +20,4 @@ src/github.com
 
 go.sum
 /bin/
+ignore_test.go
