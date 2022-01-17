@@ -7,11 +7,11 @@ export class SimpleEnemy extends Target {
         super();
     }
 
-    get buffs(): Array<Buff> {
+    public get buffs(): Array<Buff> {
         return this._buffs;
     }
 
-    get armor(): Armor {
+    public get armor(): Armor {
         return this._armor;
     }
 }
