@@ -7,7 +7,7 @@ import { Equipment } from './Equipment';
 import { Item } from './Item';
 
 export class Player extends Target {
-    public constructor(private inventory: Inventory, private stats: Stats) {
+    public constructor(private _inventory: Inventory, private _stats: Stats) {
         super();
     }
 
@@ -31,20 +31,20 @@ export class Player extends Target {
                 (simpleEnemy.buffs
                     .reduce(
                         (sum, buff) => sum + buff.soakModifier, 0)
-                ) + 1
+                    + 1)
             );
         }
         return soak;
     }
 
     private getDamageModifier(): number {
-        const equipment: Equipment = this.inventory.equipment;
+        const equipment: Equipment = this._inventory.equipment;
         const leftHand: Item = equipment.leftHand;
         const rightHand: Item = equipment.rightHand;
         const head: Item = equipment.head;
         const feet: Item = equipment.feet;
         const chest: Item = equipment.chest;
-        const strengthModifier: number = this.stats.strength * 0.1;
+        const strengthModifier: number = this._stats.strength * 0.1;
         return (
             strengthModifier +
             leftHand.damageModifier +
@@ -56,18 +56,18 @@ export class Player extends Target {
     }
 
     private getBaseDamage() {
-        const inventory: Inventory = this.inventory;
+        const inventory: Inventory = this._inventory;
         const equipment: Equipment = inventory.equipment;
         const leftHand: Item = equipment.leftHand;
         const rightHand: Item = equipment.rightHand;
         const head: Item = equipment.head;
-        const feat: Item = equipment.feet;
+        const feet: Item = equipment.feet;
         const chest: Item = equipment.chest;
         return (
             leftHand.baseDamage +
             rightHand.baseDamage +
             head.baseDamage +
-            feat.baseDamage +
+            feet.baseDamage +
             chest.baseDamage
         );
     }
