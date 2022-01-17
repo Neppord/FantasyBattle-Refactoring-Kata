@@ -1,8 +1,8 @@
 export class Damage {
 
-    constructor(private _amount: number){}
+    constructor(private _amount: number) { }
 
-    get amount():number {
+    get amount(): number {
         return this._amount;
     }
 

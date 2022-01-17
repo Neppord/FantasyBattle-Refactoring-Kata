@@ -1,5 +1,5 @@
 {
-    "name": "fantasy-battle-refactoring-kata",
+    "name": "fantasy-battle",
     "version": "0.0.1",
     "scripts": {
         "test": "jest",

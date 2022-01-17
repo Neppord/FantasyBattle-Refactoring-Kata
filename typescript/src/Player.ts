@@ -1,10 +1,10 @@
-import {Target} from './Target';
-import {Inventory} from './Inventory';
-import {Stats} from './Stats';
-import {Damage} from './Damage';
-import {SimpleEnemy} from './SimpleEnemy';
-import {Equipment} from './Equipment';
-import {Item} from './Item';
+import { Target } from './Target';
+import { Inventory } from './Inventory';
+import { Stats } from './Stats';
+import { Damage } from './Damage';
+import { SimpleEnemy } from './SimpleEnemy';
+import { Equipment } from './Equipment';
+import { Item } from './Item';
 
 export class Player extends Target {
     public constructor(private inventory: Inventory, private stats: Stats) {
@@ -21,7 +21,7 @@ export class Player extends Target {
 
     private getSoak(other: Target, totalDamage: number): number {
         let soak = 0;
-        if(other instanceof Player) {
+        if (other instanceof Player) {
             // TODO: Not implemented yet
             //  Add friendly fire
             soak = totalDamage;
@@ -30,7 +30,7 @@ export class Player extends Target {
             soak = Math.round(simpleEnemy.armor.damageSoak *
                 (simpleEnemy.buffs
                     .reduce(
-                    (sum, buff) => sum + buff.soakModifier, 0)
+                        (sum, buff) => sum + buff.soakModifier, 0)
                 ) + 1
             );
         }
