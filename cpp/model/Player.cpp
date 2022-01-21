@@ -16,32 +16,32 @@ Damage * Player::calculateDamage(Target & target) {
 
 float Player::getDamageModifier() {
     Equipment equipment = inventory.getEquipment();
-    Item leftHand = equipment.getLeftHand();
-    Item rightHand = equipment.getRightHand();
-    Item head = equipment.getHead();
-    Item feet = equipment.getFeet();
-    Item chest = equipment.getChest();
+    Item* leftHand = equipment.getLeftHand();
+    Item* rightHand = equipment.getRightHand();
+    Item* head = equipment.getHead();
+    Item* feet = equipment.getFeet();
+    Item* chest = equipment.getChest();
     float strengthModifier = stats.getStrength() * 0.1f;
     return strengthModifier +
-           leftHand.getDamageModifier() +
-           rightHand.getDamageModifier() +
-           head.getDamageModifier() +
-           feet.getDamageModifier() +
-           chest.getDamageModifier();
+           leftHand->getDamageModifier() +
+           rightHand->getDamageModifier() +
+           head->getDamageModifier() +
+           feet->getDamageModifier() +
+           chest->getDamageModifier();
 }
 
 int Player::getBaseDamage() {
     Equipment equipment = inventory.getEquipment();
-    Item leftHand = equipment.getLeftHand();
-    Item rightHand = equipment.getRightHand();
-    Item head = equipment.getHead();
-    Item feet = equipment.getFeet();
-    Item chest = equipment.getChest();
-    return leftHand.getBaseDamage() +
-           rightHand.getBaseDamage() +
-           head.getBaseDamage() +
-           feet.getBaseDamage() +
-           chest.getBaseDamage();
+    Item* leftHand = equipment.getLeftHand();
+    Item* rightHand = equipment.getRightHand();
+    Item* head = equipment.getHead();
+    Item* feet = equipment.getFeet();
+    Item* chest = equipment.getChest();
+    return leftHand->getBaseDamage() +
+           rightHand->getBaseDamage() +
+           head->getBaseDamage() +
+           feet->getBaseDamage() +
+           chest->getBaseDamage();
 }
 
 int Player::getSoak(Target & other, int totalDamage) {

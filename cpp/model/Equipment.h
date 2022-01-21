@@ -6,20 +6,20 @@
 
 class Equipment {
 public:
-    Equipment(Item &leftHand, Item &rightHand, Item &head, Item &feet, Item &chest);
+    Equipment(Item* leftHand, Item* rightHand, Item* head, Item* feet, Item* chest);
 
-    const Item getLeftHand();
-    const Item getRightHand();
-    const Item getHead();
-    const Item getFeet();
-    const Item getChest();
+    Item* getLeftHand();
+    Item* getRightHand();
+    Item* getHead();
+    Item* getFeet();
+    Item* getChest();
 
 protected:
-    Item leftHand;
-    Item rightHand;
-    Item head;
-    Item feet;
-    Item chest;
+    Item* leftHand;
+    Item* rightHand;
+    Item* head;
+    Item* feet;
+    Item* chest;
 };
 
 
