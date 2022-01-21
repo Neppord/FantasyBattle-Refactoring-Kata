@@ -21,7 +21,10 @@ add_executable(FantasyBattle test/main.cpp
         test/PlayerTest.cpp
         model/Stats.cpp model/Stats.h
         model/Equipment.cpp model/Equipment.h
-        model/Armor.cpp model/Armor.h
-        model/Buff.cpp model/Buff.h model/SimpleEnemy.cpp model/SimpleEnemy.h model/Target.h model/Item.cpp model/Item.h)
+        model/SimpleArmor.cpp model/SimpleArmor.h model/Armor.h
+        model/BasicBuff.cpp model/BasicBuff.h model/Buff.h
+        model/SimpleEnemy.cpp model/SimpleEnemy.h
+        model/Target.h
+        model/Item.cpp model/Item.h)
 target_link_libraries(FantasyBattle gtest ${CMAKE_THREAD_LIBS_INIT})
 gtest_discover_tests(FantasyBattle)

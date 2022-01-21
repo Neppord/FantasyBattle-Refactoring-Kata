@@ -12,15 +12,15 @@ using namespace std;
 
 class SimpleEnemy : public Target {
 public:
-    SimpleEnemy(Armor & armor, vector<Buff> & buffs);
+    SimpleEnemy(Armor* armor, vector<Buff*> & buffs);
 
-    virtual const bool isPlayer();
-    virtual const Armor getArmor();
-    virtual const vector<Buff> getBuffs();
+    virtual const bool isPlayer() override;
+    virtual const Armor* getArmor() override;
+    virtual const vector<Buff*> getBuffs() override;
 
 private:
-    Armor armor;
-    vector<Buff> & buffs;
+    Armor* armor;
+    vector<Buff*> & buffs;
 };
 
 

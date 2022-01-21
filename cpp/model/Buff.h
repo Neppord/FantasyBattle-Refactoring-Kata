@@ -4,14 +4,8 @@
 
 class Buff {
 public:
-    Buff(float soakModifier, float damageModifier);
-
-    virtual float getSoakModifier();
-    virtual float getDamageModifier();
-
-protected:
-    float soakModifier;
-    float damageModifier;
+    virtual float getSoakModifier() = 0;
+    virtual float getDamageModifier() = 0;
 };
 
 

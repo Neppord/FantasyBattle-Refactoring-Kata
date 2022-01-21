@@ -52,11 +52,11 @@ int Player::getSoak(Target & other, int totalDamage) {
         soak = totalDamage;
     } else {
         float buffs = 1;
-        for(Buff buff: other.getBuffs()) {
-            buffs += buff.getSoakModifier();
+        for(Buff* buff: other.getBuffs()) {
+            buffs += buff->getSoakModifier();
         }
         soak = round(
-                other.getArmor().getDamageSoak() * buffs
+                other.getArmor()->getDamageSoak() * buffs
         );
     }
     return soak;

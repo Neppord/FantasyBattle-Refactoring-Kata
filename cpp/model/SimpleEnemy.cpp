@@ -1,6 +1,6 @@
 #include "SimpleEnemy.h"
 
-SimpleEnemy::SimpleEnemy(Armor &armor, vector<Buff> &buffs) : armor(armor), buffs(buffs) {
+SimpleEnemy::SimpleEnemy(Armor* armor, vector<Buff*> &buffs) : armor(armor), buffs(buffs) {
 
 }
 
@@ -8,10 +8,10 @@ const bool SimpleEnemy::isPlayer() {
     return false;
 }
 
-const Armor SimpleEnemy::getArmor() {
+const Armor* SimpleEnemy::getArmor() {
     return armor;
 }
 
-const vector<Buff> SimpleEnemy::getBuffs() {
+const vector<Buff*> SimpleEnemy::getBuffs() {
     return buffs;
 }
