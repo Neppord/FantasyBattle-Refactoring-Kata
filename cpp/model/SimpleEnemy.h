@@ -15,8 +15,8 @@ public:
     SimpleEnemy(Armor* armor, vector<Buff*> & buffs);
 
     virtual const bool isPlayer() override;
-    virtual const Armor* getArmor() override;
-    virtual const vector<Buff*> getBuffs() override;
+    virtual const Armor* getArmor();
+    virtual const vector<Buff*> getBuffs();
 
 private:
     Armor* armor;

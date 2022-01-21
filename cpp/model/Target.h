@@ -12,8 +12,6 @@ using namespace std;
 class Target {
 public:
     virtual const bool isPlayer() = 0;
-    virtual const vector<Buff*> getBuffs() = 0;
-    virtual const Armor* getArmor() = 0;
 };
 
 

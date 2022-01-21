@@ -2,8 +2,13 @@
 
 #include "Player.h"
 #include "Target.h"
+#include "SimpleEnemy.h"
 
 Player::Player(Inventory &inventory, Stats & stats) : inventory(inventory), stats(stats) {
+}
+
+const bool Player::isPlayer() {
+    return true;
 }
 
 Damage * Player::calculateDamage(Target & target) {
@@ -51,12 +56,13 @@ int Player::getSoak(Target & other, int totalDamage) {
         //  Add friendly fire
         soak = totalDamage;
     } else {
+        SimpleEnemy& enemy = static_cast<SimpleEnemy&>(other);
         float buffs = 1;
-        for(Buff* buff: other.getBuffs()) {
+        for(Buff* buff: enemy.getBuffs()) {
             buffs += buff->getSoakModifier();
         }
         soak = round(
-                other.getArmor()->getDamageSoak() * buffs
+                enemy.getArmor()->getDamageSoak() * buffs
         );
     }
     return soak;
