@@ -20,7 +20,6 @@ protected:
     Item head;
     Item feet;
     Item chest;
-
 };
 
 

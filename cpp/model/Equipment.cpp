@@ -1,9 +1,11 @@
 #include "Equipment.h"
 
-
 Equipment::Equipment(Item &leftHand, Item &rightHand, Item &head, Item &feet, Item &chest) : leftHand(leftHand), rightHand(rightHand), head(head), feet(feet), chest(chest) {
 
 }
+
+// TODO add a ring item that may be equipped
+//  that may also add damage modifier
 
 const Item Equipment::getLeftHand() {
     return leftHand;
@@ -24,5 +26,3 @@ const Item Equipment::getFeet() {
 const Item Equipment::getChest() {
     return chest;
 }
-
-

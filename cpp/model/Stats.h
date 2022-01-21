@@ -10,7 +10,6 @@ public:
 
 private:
     int strength;
-
 };
 
 
