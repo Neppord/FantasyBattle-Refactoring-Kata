@@ -1,6 +1,7 @@
 #ifndef FANTASYBATTLE_SIMPLEENEMY_H
 #define FANTASYBATTLE_SIMPLEENEMY_H
 
+
 #include <vector>
 
 #include "Armor.h"
@@ -14,8 +15,9 @@ public:
     SimpleEnemy(Armor & armor, vector<Buff> & buffs);
 
     virtual const bool isPlayer();
-    virtual const vector<Buff> getBuffs();
     virtual const Armor getArmor();
+    virtual const vector<Buff> getBuffs();
+
 private:
     Armor armor;
     vector<Buff> & buffs;
