@@ -4,10 +4,7 @@
 
 class Armor {
 public:
-    explicit Armor(int soak);
-    virtual int getDamageSoak() const;
-protected:
-    int soak;
+    virtual int getDamageSoak() const = 0;
 };
 
 

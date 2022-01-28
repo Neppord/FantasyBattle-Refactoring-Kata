@@ -1,3 +1,5 @@
-cmake-build-debug
+cmake-build-*
 .idea
 gtest
+build/
+IgnoreTest.cpp

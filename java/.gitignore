@@ -1,3 +1,9 @@
 .idea
-law-of-demeter.iml
+*.iml
 target/
+
+.project
+.classpath
+.settings
+
+IgnoreTest.java

@@ -7,11 +7,12 @@
 #include "Stats.h"
 #include "Target.h"
 
-class Player {
+class Player : public Target {
 
 public:
     Player(Inventory & inventory, Stats & stats);
 
+    virtual const bool isPlayer() override;
     Damage * calculateDamage(Target & target);
 
 protected:

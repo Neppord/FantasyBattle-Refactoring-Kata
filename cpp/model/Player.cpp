@@ -2,8 +2,13 @@
 
 #include "Player.h"
 #include "Target.h"
+#include "SimpleEnemy.h"
 
 Player::Player(Inventory &inventory, Stats & stats) : inventory(inventory), stats(stats) {
+}
+
+const bool Player::isPlayer() {
+    return true;
 }
 
 Damage * Player::calculateDamage(Target & target) {
@@ -16,32 +21,32 @@ Damage * Player::calculateDamage(Target & target) {
 
 float Player::getDamageModifier() {
     Equipment equipment = inventory.getEquipment();
-    Item leftHand = equipment.getLeftHand();
-    Item rightHand = equipment.getRightHand();
-    Item head = equipment.getHead();
-    Item feet = equipment.getFeet();
-    Item chest = equipment.getChest();
+    Item* leftHand = equipment.getLeftHand();
+    Item* rightHand = equipment.getRightHand();
+    Item* head = equipment.getHead();
+    Item* feet = equipment.getFeet();
+    Item* chest = equipment.getChest();
     float strengthModifier = stats.getStrength() * 0.1f;
     return strengthModifier +
-           leftHand.getDamageModifier() +
-           rightHand.getDamageModifier() +
-           head.getDamageModifier() +
-           feet.getDamageModifier() +
-           chest.getDamageModifier();
+           leftHand->getDamageModifier() +
+           rightHand->getDamageModifier() +
+           head->getDamageModifier() +
+           feet->getDamageModifier() +
+           chest->getDamageModifier();
 }
 
 int Player::getBaseDamage() {
     Equipment equipment = inventory.getEquipment();
-    Item leftHand = equipment.getLeftHand();
-    Item rightHand = equipment.getRightHand();
-    Item head = equipment.getHead();
-    Item feet = equipment.getFeet();
-    Item chest = equipment.getChest();
-    return leftHand.getBaseDamage() +
-           rightHand.getBaseDamage() +
-           head.getBaseDamage() +
-           feet.getBaseDamage() +
-           chest.getBaseDamage();
+    Item* leftHand = equipment.getLeftHand();
+    Item* rightHand = equipment.getRightHand();
+    Item* head = equipment.getHead();
+    Item* feet = equipment.getFeet();
+    Item* chest = equipment.getChest();
+    return leftHand->getBaseDamage() +
+           rightHand->getBaseDamage() +
+           head->getBaseDamage() +
+           feet->getBaseDamage() +
+           chest->getBaseDamage();
 }
 
 int Player::getSoak(Target & other, int totalDamage) {
@@ -51,12 +56,13 @@ int Player::getSoak(Target & other, int totalDamage) {
         //  Add friendly fire
         soak = totalDamage;
     } else {
+        SimpleEnemy& enemy = static_cast<SimpleEnemy&>(other);
         float buffs = 1;
-        for(Buff buff: other.getBuffs()) {
-            buffs += buff.getSoakModifier();
+        for(Buff* buff: enemy.getBuffs()) {
+            buffs += buff->getSoakModifier();
         }
         soak = round(
-                other.getArmor().getDamageSoak() * buffs
+                enemy.getArmor()->getDamageSoak() * buffs
         );
     }
     return soak;

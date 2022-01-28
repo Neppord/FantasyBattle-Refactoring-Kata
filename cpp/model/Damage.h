@@ -5,11 +5,11 @@
 class Damage {
 public:
     explicit Damage(int amount);
+
     int getAmount() const;
 
 private:
     int amount;
-
 };
 
 

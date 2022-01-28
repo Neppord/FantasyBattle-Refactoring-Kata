@@ -9,6 +9,7 @@ public:
     explicit Inventory(Equipment & equipment);
 
     Equipment & getEquipment();
+
 private:
     Equipment equipment;
 };
