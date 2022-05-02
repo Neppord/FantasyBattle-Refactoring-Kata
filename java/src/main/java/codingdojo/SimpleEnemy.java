@@ -4,8 +4,8 @@ import java.util.List;
 
 public class SimpleEnemy extends Target {
 
-    private Armor armor;
-    private List<Buff> buffs;
+    private final Armor armor;
+    private final List<Buff> buffs;
 
     public SimpleEnemy(Armor armor, List<Buff> buffs) {
         this.armor = armor;
