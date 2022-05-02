@@ -33,10 +33,10 @@ public class PlayerTest {
                 new BasicItem("Chest", 9, 10), new BasicItem("ring", 0, 0)
         );
         Inventory inventory = new Inventory(equipment);
-        Stats stats = new Stats(0);
+        Stats stats = new Stats(10, 8);
         SimpleEnemy target = new SimpleEnemy(new SimpleArmor(5), List.of());
         Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(745, damage.getAmount());
+        assertEquals(780, damage.getAmount());
     }
     @Test
     void damageCalculationsAgainstPlayer() {
@@ -48,7 +48,7 @@ public class PlayerTest {
                 new BasicItem("Chest", 9, 10), new BasicItem("ring", 0, 0)
         );
         Inventory inventory = new Inventory(equipment);
-        Stats stats = new Stats(0);
+        Stats stats = new Stats(10, 8);
         Player target = new Player(inventory, stats);
         Damage damage = new Player(inventory, stats).calculateDamage(target);
         assertEquals(0, damage.getAmount());
