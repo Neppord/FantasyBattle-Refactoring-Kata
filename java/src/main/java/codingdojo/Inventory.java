@@ -8,17 +8,7 @@ public class Inventory {
     }
 
     public float damageModifier() {
-        Equipment equipment = this.equipment;
-        Item leftHand = equipment.getLeftHand();
-        Item rightHand = equipment.getRightHand();
-        Item head = equipment.getHead();
-        Item feet = equipment.getFeet();
-        Item chest = equipment.getChest();
-        return leftHand.getDamageModifier() +
-            rightHand.getDamageModifier() +
-            head.getDamageModifier() +
-            feet.getDamageModifier() +
-            chest.getDamageModifier();
+        return equipment.damageModifier();
     }
 
     public int baseDamage() {
