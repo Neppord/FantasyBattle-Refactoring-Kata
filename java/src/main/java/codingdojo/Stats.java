@@ -9,11 +9,7 @@ public class Stats {
         this.strength = strength;
     }
 
-    int getStrength() {
-        return strength;
-    }
-
     public float strengthModifier() {
-        return getStrength() * 0.1f;
+        return strength * 0.1f;
     }
 }
