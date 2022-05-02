@@ -51,6 +51,6 @@ public class PlayerTest {
         Stats stats = new Stats(10, 8);
         Player target = new Player(inventory, stats);
         Damage damage = new Player(inventory, stats).calculateDamage(target);
-        assertEquals(0, damage.getAmount());
+        assertEquals(393, damage.getAmount());
     }
 }

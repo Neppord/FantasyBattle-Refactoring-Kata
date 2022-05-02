@@ -18,4 +18,8 @@ class Player extends Target {
         return new Damage(Math.max(0, totalDamage - soak));
     }
 
+    @Override
+    int getSoak(int totalDamage) {
+        return totalDamage / 2;
+    }
 }
