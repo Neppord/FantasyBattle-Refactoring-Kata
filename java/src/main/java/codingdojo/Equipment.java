@@ -2,33 +2,20 @@ package codingdojo;
 
 
 import java.util.List;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
-class Equipment {
-    private final Item leftHand;
-    private final Item rightHand;
-    private final Item head;
-    private final Item feet;
-    private final Item chest;
-    private final Item ring;
+record Equipment<T>(T leftHand, T rightHand, T head, T feet, T chest, T ring) {
 
-    Equipment(Item leftHand, Item rightHand, Item head, Item feet, Item chest, Item ring) {
-        this.leftHand = leftHand;
-        this.rightHand = rightHand;
-        this.head = head;
-        this.feet = feet;
-        this.chest = chest;
-        this.ring = ring;
+    public <R> Equipment<R> map(Function<T, R> f) {
+        return new Equipment<>(f.apply(leftHand), f.apply(rightHand), f.apply(head), f.apply(feet), f.apply(chest), f.apply(ring));
     }
 
-    public float damageModifier() {
-        return (float) allItems().stream().mapToDouble(Item::getDamageModifier).sum();
+    public T reduce(BinaryOperator<T> f) {
+        return allItems().stream().reduce(f).orElseThrow();
     }
 
-    public int baseDamage() {
-        return allItems().stream().mapToInt(Item::getBaseDamage).sum();
-    }
-
-    private List<Item> allItems() {
+    private List<T> allItems() {
         return List.of(leftHand, rightHand, head, feet, chest, ring);
     }
 }

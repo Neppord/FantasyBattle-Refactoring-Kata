@@ -1,18 +1,18 @@
 package codingdojo;
 
 public class Inventory {
-    private final Equipment equipment;
+    private final Equipment<Item> equipment;
 
-    public Inventory(Equipment equipment) {
-        this.equipment = equipment;
+    public Inventory(Equipment<Item> equipment1) {
+        this.equipment = equipment1;
     }
 
     public float damageModifier() {
-        return equipment.damageModifier();
+        return equipment.map(Item::getDamageModifier).reduce(Float::sum);
     }
 
     public int baseDamage() {
-        return equipment.baseDamage();
+        return equipment.map(Item::getBaseDamage).reduce(Integer::sum);
     }
 
 }
