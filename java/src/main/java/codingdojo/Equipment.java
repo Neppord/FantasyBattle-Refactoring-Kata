@@ -18,27 +18,19 @@ class Equipment {
         this.chest = chest;
     }
 
-    Item getLeftHand() {
-        return leftHand;
-    }
-    Item getRightHand() {
-        return rightHand;
-    }
-    Item getHead() {
-        return head;
-    }
-    Item getFeet() {
-        return feet;
-    }
-    Item getChest() {
-        return chest;
-    }
-
     float damageModifier() {
         return leftHand.getDamageModifier() +
             rightHand.getDamageModifier() +
             head.getDamageModifier() +
             feet.getDamageModifier() +
             chest.getDamageModifier();
+    }
+
+    int baseDamage() {
+        return leftHand.getBaseDamage() +
+            rightHand.getBaseDamage() +
+            head.getBaseDamage() +
+            feet.getBaseDamage() +
+            chest.getBaseDamage();
     }
 }
