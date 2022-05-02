@@ -29,7 +29,7 @@ public class PlayerTest {
             new BasicItem("Right Hand", 3, 4),
             new BasicItem("Head", 5, 6),
             new BasicItem("Feet", 7, 8),
-            new BasicItem("Chest", 9, 10)
+            new BasicItem("Chest", 9, 10), new BasicItem("ring", 0, 0)
         ));
         Stats stats = new Stats(0);
         SimpleEnemy target = new SimpleEnemy(new SimpleArmor(5), List.of());
@@ -43,7 +43,7 @@ public class PlayerTest {
             new BasicItem("Right Hand", 3, 4),
             new BasicItem("Head", 5, 6),
             new BasicItem("Feet", 7, 8),
-            new BasicItem("Chest", 9, 10)
+            new BasicItem("Chest", 9, 10), new BasicItem("ring", 0, 0)
         ));
         Stats stats = new Stats(0);
         Player target = new Player(inventory, stats);
