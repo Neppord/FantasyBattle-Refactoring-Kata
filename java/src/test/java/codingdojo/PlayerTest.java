@@ -53,4 +53,28 @@ public class PlayerTest {
         Damage damage = new Player(inventory, stats).calculateDamage(target);
         assertEquals(393, damage.getAmount());
     }
+    @Test
+    void damageCalculationsAgainstPlayerWithEnchantments() {
+        final Equipment<Item> equipment = new Equipment<>(
+                new BasicItem("Left Hand", 1, 2),
+                new BasicItem("Right Hand", 3, 4),
+                new BasicItem("Head", 5, 6),
+                new BasicItem("Feet", 7, 8),
+                new BasicItem("Chest", 9, 10), new BasicItem("ring", 0, 0)
+        );
+        Inventory inventory = new Inventory(equipment);
+        Stats stats = new Stats(10, 8);
+        Target target = new SimpleEnemy(new SimpleArmor(5), List.of());
+        Enchantments enchantments = new Enchantments(
+            new Enchantment(5),
+            new Enchantment(5),
+            new Enchantment(5),
+            new Enchantment(5),
+            new Enchantment(5),
+            new Enchantment(5)
+        );
+        Damage damage =
+            new Player(inventory, stats, enchantments).calculateDamage(target);
+        assertEquals(810, damage.getAmount());
+    }
 }
