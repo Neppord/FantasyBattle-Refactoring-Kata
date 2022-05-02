@@ -28,18 +28,8 @@ class Player extends Target {
             // TODO: Not implemented yet
             //  Add friendly fire
             soak = totalDamage;
-        } else if (other instanceof SimpleEnemy) {
-            SimpleEnemy simpleEnemy = (SimpleEnemy) other;
-            soak = Math.round(
-                simpleEnemy.getArmor().getDamageSoak() *
-                (
-                    ((float) simpleEnemy.getBuffs()
-                        .stream()
-                        .mapToDouble(Buff::soakModifier)
-                        .sum()) +
-                    1f
-                )
-            );
+        } else if (other instanceof SimpleEnemy enemy) {
+            soak = enemy.getSimpleSoak();
         }
         return soak;
     }
