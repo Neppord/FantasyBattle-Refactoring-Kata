@@ -3,8 +3,8 @@ package codingdojo;
 public class Inventory {
     private final Equipment<Item> equipment;
 
-    public Inventory(Equipment<Item> equipment1) {
-        this.equipment = equipment1;
+    public Inventory(Equipment<Item> equipment) {
+        this.equipment = equipment;
     }
 
     public float damageModifier() {
