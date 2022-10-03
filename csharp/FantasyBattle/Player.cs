@@ -23,24 +23,23 @@ namespace FantasyBattle
             return new Damage(Math.Max(0, totalDamage - soak));
         }
 
-        private int GetSoak(Target other, int totalDamage) {
-            int soak = 0;
-            if (other is Player) {
-                // TODO: Not implemented yet
-                //  Add friendly fire
-                soak = totalDamage;
-            } else if (other is SimpleEnemy simpleEnemy) {
-                soak = (int)Math.Round(
-                    simpleEnemy.Armor.DamageSoak *
-                    (
-                        simpleEnemy.Buffs.Select(x => x.SoakModifier).Sum() + 1
-                    ), 0
-                );
-            }
-            return soak;
+        private int CalculateBaseDamage()
+        {
+            Equipment equipment = Inventory.Equipment;
+            Item leftHand = equipment.LeftHand;
+            Item rightHand = equipment.RightHand;
+            Item head = equipment.Head;
+            Item feet = equipment.Feet;
+            Item chest = equipment.Chest;
+            return leftHand.BaseDamage +
+                   rightHand.BaseDamage +
+                   head.BaseDamage +
+                   feet.BaseDamage +
+                   chest.BaseDamage;
         }
 
-        private float CalculateDamageModifier() {
+        private float CalculateDamageModifier()
+        {
             Equipment equipment = Inventory.Equipment;
             Item leftHand = equipment.LeftHand;
             Item rightHand = equipment.RightHand;
@@ -56,18 +55,26 @@ namespace FantasyBattle
                    chest.DamageModifier;
         }
 
-        private int CalculateBaseDamage() {
-            Equipment equipment = Inventory.Equipment;
-            Item leftHand = equipment.LeftHand;
-            Item rightHand = equipment.RightHand;
-            Item head = equipment.Head;
-            Item feet = equipment.Feet;
-            Item chest = equipment.Chest;
-            return leftHand.BaseDamage +
-                   rightHand.BaseDamage +
-                   head.BaseDamage +
-                   feet.BaseDamage +
-                   chest.BaseDamage;
+        private int GetSoak(Target other, int totalDamage)
+        {
+            int soak = 0;
+            if (other is Player)
+            {
+                // TODO: Not implemented yet
+                //  Add friendly fire
+                soak = totalDamage;
+            }
+            else if (other is SimpleEnemy simpleEnemy)
+            {
+                soak = (int)Math.Round(
+                    simpleEnemy.Armor.DamageSoak *
+                    (
+                        simpleEnemy.Buffs.Select(x => x.SoakModifier).Sum() + 1
+                    ), 0
+                );
+            }
+
+            return soak;
         }
     }
 }
