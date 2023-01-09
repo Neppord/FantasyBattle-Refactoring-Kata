@@ -2,8 +2,8 @@ package codingdojo;
 
 public class BasicBuff implements Buff {
 
-    private float soak;
-    private float damage;
+    private final float soak;
+    private final float damage;
 
     public BasicBuff(float soak, float damage) {
         this.soak = soak;
