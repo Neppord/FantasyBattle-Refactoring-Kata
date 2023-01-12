@@ -11,6 +11,7 @@ import Inventory (Inventory)
 import Item (getBaseDamage, getDamageModifier) as Item
 import SimpleEnemy (SimpleEnemy)
 import Stats (Stats)
+import Data.Newtype (unwrap)
 
 type Player =
   { inventory :: Inventory
@@ -36,7 +37,10 @@ getBaseDamage player = Item.getBaseDamage leftHand
   + Item.getBaseDamage feet
   + Item.getBaseDamage chest
   where
-  equipment = player.inventory.equipment
+  equipment = player.inventory
+    # unwrap
+    # _.equipment
+    # unwrap
   leftHand = equipment.leftHand
   rightHand = equipment.rightHand
   head = equipment.head
@@ -51,7 +55,10 @@ getDamageModifier player = strengthModifier
   + Item.getDamageModifier feet
   + Item.getDamageModifier chest
   where
-  equipment = player.inventory.equipment
+  equipment = player.inventory
+    # unwrap
+    # _.equipment
+    # unwrap
   leftHand = equipment.leftHand
   rightHand = equipment.rightHand
   head = equipment.head
@@ -60,8 +67,8 @@ getDamageModifier player = strengthModifier
   strengthModifier = toNumber player.stats.strength * 0.1
 
 getSoak :: Target -> Int -> Player -> Int
-getSoak target totalDamage player = case target of
-  PlayerTarget other -> totalDamage
+getSoak target totalDamage _ = case target of
+  PlayerTarget _ -> totalDamage
   SimpleEnemyTarget other -> round $
     (other.armor # Armor.getDamageSoak # toNumber)
       * (other.buffs <#> Buff.soakModifier # Array.foldr (+) 1.0)

@@ -12,6 +12,8 @@ import Test.Spec.Assertions (shouldEqual)
 import Test.Spec.Reporter.Console (consoleReporter)
 import Test.Spec.Reporter.TeamCity (teamcityReporter)
 import Test.Spec.Runner (runSpec)
+import Inventory (Inventory(..))
+import Equipment (Equipment(..))
 
 main :: Effect Unit
 main = launchAff_ $ runSpec [ consoleReporter, teamcityReporter ] do
@@ -19,14 +21,14 @@ main = launchAff_ $ runSpec [ consoleReporter, teamcityReporter ] do
     it "does no damage to itself" do
       let
         uselessItem = BasicItem { name: "useless", baseDamage: 0, damageModifier: 0.0 }
-        equipment =
+        equipment = Equipment
           { leftHand: uselessItem
           , rightHand: uselessItem
           , head: uselessItem
           , chest: uselessItem
           , feet: uselessItem
           }
-        inventory = { equipment }
+        inventory = Inventory { equipment }
         stats = { strength: 1 }
         player = { inventory, stats }
         noDamage = Damage 0

@@ -1,6 +1,7 @@
 module Inventory where
 
-
 import Equipment (Equipment)
+import Data.Newtype (class Newtype)
 
-type Inventory = {equipment:: Equipment}
+newtype Inventory = Inventory { equipment :: Equipment }
+derive instance Newtype Inventory _
