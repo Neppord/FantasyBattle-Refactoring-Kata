@@ -4,8 +4,13 @@ namespace FantasyBattle
 {
     public class SimpleEnemy : Target
     {
-        public Armor Armor { get; }
-        public List<Buff> Buffs { get; }
+        public virtual Armor Armor { get; }
+        public virtual List<Buff> Buffs { get; }
+
+        public SimpleEnemy()
+        {
+
+        }
 
         public SimpleEnemy(Armor armor, List<Buff> buffs)
         {
