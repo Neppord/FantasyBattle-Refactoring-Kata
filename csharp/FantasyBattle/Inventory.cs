@@ -2,7 +2,13 @@ namespace FantasyBattle
 {
     public class Inventory
     {
-        public Equipment Equipment { get; }
+        public virtual Equipment Equipment { get; }
+
+        public Inventory()
+        {
+
+        }
+
 
         public Inventory(Equipment equipment)
         {
