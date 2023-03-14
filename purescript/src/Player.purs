@@ -2,16 +2,17 @@ module Player where
 
 import Prelude
 
-import Armor (getDamageSoak) as Armor
-import Buff (soakModifier) as Buff
 import Damage (Damage(..))
-import Data.Array (foldr) as Array
 import Data.Int (round, toNumber)
-import Inventory (Inventory)
-import Item (getBaseDamage, getDamageModifier) as Item
+import Data.Newtype (un)
+import Equipment (Equipment(Equipment))
+import Inventory (Inventory(Inventory))
 import SimpleEnemy (SimpleEnemy)
 import Stats (Stats)
-import Data.Newtype (unwrap)
+import Armor (getDamageSoak) as Armor
+import Data.Array (foldr) as Array
+import Buff (soakModifier) as Buff
+import Item (getBaseDamage, getDamageModifier) as Item
 
 type Player =
   { inventory :: Inventory
@@ -38,9 +39,9 @@ getBaseDamage player = Item.getBaseDamage leftHand
   + Item.getBaseDamage chest
   where
   equipment = player.inventory
-    # unwrap
+    # un Inventory
     # _.equipment
-    # unwrap
+    # un Equipment
   leftHand = equipment.leftHand
   rightHand = equipment.rightHand
   head = equipment.head
@@ -56,9 +57,9 @@ getDamageModifier player = strengthModifier
   + Item.getDamageModifier chest
   where
   equipment = player.inventory
-    # unwrap
+    # un Inventory
     # _.equipment
-    # unwrap
+    # un Equipment
   leftHand = equipment.leftHand
   rightHand = equipment.rightHand
   head = equipment.head
