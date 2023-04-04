@@ -1,17 +1,19 @@
 package codingdojo
 
-type Equipment struct {
-	// TODO add a ring item that may be equipped
-	//  that may also add damage modifier
-	leftHand  Item
-	rightHand Item
-	head      Item
-	feet      Item
-	chest     Item
-}
+type (
+	Equipment struct{ Items } // TODO add a ring item that may be equipped that may also add damage modifier
 
-func MakeEquipment(leftHand Item, rightHand Item, head Item, feet Item, chest Item) Equipment {
-	return Equipment{leftHand, rightHand, head, feet, chest}
+	Items struct {
+		leftHand  Item
+		rightHand Item
+		head      Item
+		feet      Item
+		chest     Item
+	}
+)
+
+func MakeEquipment(items Items) Equipment {
+	return Equipment{items}
 }
 
 func (e Equipment) GetLeftHand() Item {

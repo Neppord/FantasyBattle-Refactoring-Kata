@@ -7,16 +7,17 @@ import (
 )
 
 type (
-	mockArmor          func() int32
-	mockSoakModifier   func() float64
-	mockDamageModifier func() float64
-	mockBuff           struct {
+	mockArmor             func() int32
+	mockSoakModifier      func() float64
+	mockDamageModifier    func() float64
+	mockGetBaseDamage     func() int32
+	mockGetDamageModifier func() float64
+
+	mockBuff struct {
 		mockSoakModifier
 		mockDamageModifier
 	}
-	mockGetBaseDamage     func() int32
-	mockGetDamageModifier func() float64
-	mockItem              struct {
+	mockItem struct {
 		mockGetBaseDamage
 		mockGetDamageModifier
 	}
@@ -53,87 +54,68 @@ func TestDamageCalculations(t *testing.T) {
 		mockSoakModifier:   mockSoakModifier(func() float64 { return 1.0 }),
 		mockDamageModifier: mockDamageModifier(func() float64 { return 1.0 }),
 	}
-	leftHandItem := mockItem{
-		mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
-		mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.4 }),
-	}
-	feetItem := mockItem{
-		mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
-		mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 0.1 }),
-	}
-	headItem := mockItem{
-		mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
-		mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.2 }),
-	}
-	chestItem := mockItem{
-		mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
-		mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.4 }),
+
+	mockItems := Items{
+		leftHand: mockItem{
+			mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
+			mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.4 }),
+		},
+		head: mockItem{
+			mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
+			mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.2 }),
+		},
+		feet: mockItem{
+			mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
+			mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 0.1 }),
+		},
+		chest: mockItem{
+			mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 0 }),
+			mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.4 }),
+		},
 	}
 
 	tests := map[string]struct {
 		expectedDamage int32
 		armor          Armor
 		buff           Buff
-		equipment      struct {
-			rightHand Item
-			leftHand  Item
-			head      Item
-			feet      Item
-			chest     Item
-		}
+		equipmentItems Items
 	}{
 		"the right hand with flashy sword of danger": {
 			expectedDamage: 41,
 			armor:          armorStub,
 			buff:           buffStub,
-			equipment: struct {
-				rightHand Item
-				leftHand  Item
-				head      Item
-				feet      Item
-				chest     Item
-			}{
-				rightHand: mockItem{
+			equipmentItems: func() Items {
+				mockItems.rightHand = mockItem{
 					mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 10 }),
 					mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.0 }),
-				},
-				leftHand: leftHandItem,
-				head:     headItem,
-				feet:     feetItem,
-				chest:    chestItem,
-			},
+				}
+				return mockItems
+			}(),
 		},
 		"the right hand with excalibur": {
 			expectedDamage: 102,
 			armor:          armorStub,
 			buff:           buffStub,
-			equipment: struct {
-				rightHand Item
-				leftHand  Item
-				head      Item
-				feet      Item
-				chest     Item
-			}{
-				rightHand: mockItem{
+			equipmentItems: func() Items {
+				mockItems.rightHand = mockItem{
 					mockGetBaseDamage:     mockGetBaseDamage(func() int32 { return 20 }),
 					mockGetDamageModifier: mockGetDamageModifier(func() float64 { return 1.5 }),
-				},
-				leftHand: leftHandItem,
-				head:     headItem,
-				feet:     feetItem,
-				chest:    chestItem,
-			},
+				}
+				return mockItems
+			}(),
 		},
 	}
 
 	for name, testCase := range tests {
 		t.Run(name, func(t *testing.T) {
 			equipment := MakeEquipment(
-				testCase.equipment.leftHand,
-				testCase.equipment.rightHand,
-				testCase.equipment.head,
-				testCase.equipment.feet,
-				testCase.equipment.chest,
+				Items{
+					leftHand:  testCase.equipmentItems.leftHand,
+					rightHand: testCase.equipmentItems.rightHand,
+					head:      testCase.equipmentItems.head,
+					feet:      testCase.equipmentItems.feet,
+					chest:     testCase.equipmentItems.chest,
+				},
 			)
 			inventory := MakeInventory(equipment)
 
