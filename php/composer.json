@@ -13,5 +13,9 @@
     "phpunit/phpunit": ">=8.0",
     "mockery/mockery": ">=1.4",
     "phpstan/phpstan": "^0.12.68"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "tests": "phpunit"
   }
 }
